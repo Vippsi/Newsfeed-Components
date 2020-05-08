@@ -99,6 +99,54 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
+*/
+  function makeArticle(articleAttrs){
+    const {title, date, firstParagraph, secondParagraph, thirdParagraph} = articleAttrs
+
+    const article = document.createElement('div')
+    const articleTitle = document.createElement('h2')
+    const articleDate = document.createElement('p')
+    const articleFirstParagraph = document.createElement('p')
+    const articelSecondParagraph = document.createElement('p')
+    const articleThirdParagraph = document.createElement('p')
+    const button = document.createElement('span')
+
+
+    article.appendChild(articleTitle)
+    article.appendChild(articleDate)
+    article.appendChild(articleFirstParagraph)
+    article.appendChild(articelSecondParagraph)
+    article.appendChild(articleThirdParagraph)
+    article.appendChild(button)
+
+    article.classList.add('article')
+    articleDate.classList.add('date')
+    button.classList.add('expandButton')
+
+    button.textContent = 'Show More'
+    articleTitle.textContent = title
+    articleDate.textContent = date
+    articleFirstParagraph.textContent = firstParagraph
+    articelSecondParagraph.textContent = secondParagraph
+    articleThirdParagraph.textContent = thirdParagraph
+
+    button.addEventListener('click', event => {
+      article.classList.toggle('article-open')
+    })
+   return article 
+  }
+
+  const articles = document.querySelector('.articles')
+  
+
+
+  data.forEach(articleObj => {
+    const article = makeArticle(articleObj)
+    articles.appendChild(article)
+  })
+
+
+/*
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
@@ -112,3 +160,5 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
